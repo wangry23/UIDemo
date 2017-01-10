@@ -56,9 +56,59 @@ namespace UIDemo.MyDataGrid
         }
         private static void CreateColumns(DataGrid gridView, ICollectionView view)
         {
+            Style rightStyle = new Style(typeof(TextBlock));
+            Style leftStyle = new Style(typeof(TextBlock));
+            Setter setRight = new Setter(TextBlock.HorizontalAlignmentProperty, HorizontalAlignment.Right);
+            rightStyle.Setters.Add(setRight);
+            Setter setMargin = new Setter(TextBlock.MarginProperty, new Thickness(5, 0, 5, 0));
+            rightStyle.Setters.Add(setMargin);
+            setRight = new Setter(TextBlock.HorizontalAlignmentProperty, HorizontalAlignment.Left);
+            leftStyle.Setters.Add(setRight);
+            leftStyle.Setters.Add(setMargin);
             foreach (var item in view)
             {
-                DataGridColumn column = CreateColumn(gridView, item);
+                DataGridTextColumn column = new DataGridTextColumn();
+                //var info = columnSource as DataGridColumnInfoM;
+                var info = item as DataGridColumnInfoM;
+
+                if (!string.IsNullOrEmpty(info.Header))
+                {
+                    column.Header = info.Header;
+                }
+                if (!string.IsNullOrEmpty(info.Binding))
+                {
+
+                    column.Binding = new Binding(info.Binding);
+                }
+                if (!string.IsNullOrEmpty(info.HorizontalContentAlignment))
+                {
+#if false
+                    //column.ElementStyle = new Binding(info.HorizontalContentAlignment);
+                    Style right = new Style(typeof(TextBlock));
+                    Setter setRight = new Setter(TextBlock.HorizontalAlignmentProperty, HorizontalAlignment.Right);
+                    right.Setters.Add(setRight);
+                    setRight = new Setter(TextBlock.MarginProperty, new Thickness(5, 0, 5, 0));
+                    right.Setters.Add(setRight);
+                    column.ElementStyle = right;
+#endif
+                    switch(info.HorizontalContentAlignment)
+                    {
+                        case "left":
+                            column.ElementStyle = leftStyle; break;
+                        case "right":
+                            column.ElementStyle = rightStyle; break;
+                        default:
+                            column.ElementStyle = leftStyle; break;
+                    }
+                }
+                if (info.Width > 0)
+                {
+                    column.Width = info.Width;
+                }
+                if (info.MinWidth > 0)
+                {
+                    column.MinWidth = info.MinWidth;
+                }
                 gridView.Columns.Add(column);
             }
         }
@@ -87,9 +137,9 @@ namespace UIDemo.MyDataGrid
                 right.Setters.Add(setRight);
                 column.ElementStyle = right;
             }
-            if (info.DefaultWidth > 0)
+            if (info.Width > 0)
             {
-                column.Width = info.DefaultWidth;
+                column.Width = info.Width;
             }
 
             return column;

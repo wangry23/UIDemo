@@ -1,9 +1,12 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight.CommandWpf;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace UIDemo.ViewModel
 {
@@ -17,8 +20,9 @@ namespace UIDemo.ViewModel
         {
             DataGridColumns = new ObservableCollection<MyDataGrid.DataGridColumnInfoM>();
             DataGridColumns.Add(new MyDataGrid.DataGridColumnInfoM()
-            { Header = "第一列", Binding = "ID", HorizontalContentAlignment = "Right", DefaultWidth = 10 });
-            DataGridColumns.Add(new MyDataGrid.DataGridColumnInfoM() { Header = "第二列", Binding = "Name" });
+            { Header = "第一列", Binding = "ID", HorizontalContentAlignment = "right", Width = 10 });
+            DataGridColumns.Add(new MyDataGrid.DataGridColumnInfoM()
+            { Header = "第二列", Binding = "Name", HorizontalContentAlignment = "left", MinWidth = 10 });
             DataGridColumns.Add(new MyDataGrid.DataGridColumnInfoM() { Header = "第三列", Binding = "Address" });
             DataGridColumns.Add(new MyDataGrid.DataGridColumnInfoM() { Header = "第四列", Binding = "ID" });
             DataGridColumns.Add(new MyDataGrid.DataGridColumnInfoM() { Header = "第二列", Binding = "Name" });
@@ -63,6 +67,21 @@ namespace UIDemo.ViewModel
         {
             get { return GetValue(() => DataGridColumns); }
             set { SetValue(() => DataGridColumns, value); }
+        }
+
+        private ICommand _DataGridDoubleClickCommand;
+        public ICommand DataGridDoubleClickCommand
+        {
+            get
+            {
+                if (_DataGridDoubleClickCommand == null)
+                    _DataGridDoubleClickCommand = new RelayCommand<Model.DataGridM>(DataGridDoubleClickCommandWorker, (o) => true);
+                return _DataGridDoubleClickCommand;
+            }
+        }
+        private void DataGridDoubleClickCommandWorker(Model.DataGridM selectionItem)
+        {
+            //MessageBox.Show(selectionItem.Name);
         }
     }
 }

@@ -21,9 +21,9 @@ namespace UIDemo.MyDataGrid
         /// </summary>
         public string HorizontalContentAlignment { get; set; }
         /// <summary>
-        /// 默认宽度
+        /// 宽度
         /// </summary>
-        public int DefaultWidth { get; set; }
+        public int Width { get; set; }
         /// <summary>
         /// 最小宽度。
         /// </summary>
