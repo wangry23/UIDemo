@@ -8,8 +8,25 @@ namespace UIDemo.MyDataGrid
 {
     public class DataGridColumnInfoM
     {
+        /// <summary>
+        /// 列名
+        /// </summary>
         public string Header { get; set; }
+        /// <summary>
+        /// 行显示的值。
+        /// </summary>
         public string Binding { get; set; }
-        public string Dock { get; set; }
+        /// <summary>
+        /// 对齐方式
+        /// </summary>
+        public string HorizontalContentAlignment { get; set; }
+        /// <summary>
+        /// 默认宽度
+        /// </summary>
+        public int DefaultWidth { get; set; }
+        /// <summary>
+        /// 最小宽度。
+        /// </summary>
+        public int MinWidth { get; set; }
     }
 }

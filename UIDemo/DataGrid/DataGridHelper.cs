@@ -77,12 +77,21 @@ namespace UIDemo.MyDataGrid
 
                 column.Binding = new Binding(info.Binding);
             }
-            /*
+            if(!string.IsNullOrEmpty(info.HorizontalContentAlignment))
+            {
+                //column.ElementStyle = new Binding(info.HorizontalContentAlignment);
+                Style right = new Style(typeof(TextBlock));
+                Setter setRight = new Setter(TextBlock.HorizontalAlignmentProperty, HorizontalAlignment.Right);
+                right.Setters.Add(setRight);
+                setRight = new Setter(TextBlock.MarginProperty, new Thickness(5,0,5,0));
+                right.Setters.Add(setRight);
+                column.ElementStyle = right;
+            }
             if (info.DefaultWidth > 0)
             {
                 column.Width = info.DefaultWidth;
             }
-            */
+
             return column;
 #if false
             DataTemplate template = new DataTemplate();

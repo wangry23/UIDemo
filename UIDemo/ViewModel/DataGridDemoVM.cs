@@ -16,7 +16,8 @@ namespace UIDemo.ViewModel
         private int init()
         {
             DataGridColumns = new ObservableCollection<MyDataGrid.DataGridColumnInfoM>();
-            DataGridColumns.Add(new MyDataGrid.DataGridColumnInfoM() { Header = "第一列", Binding = "ID" });
+            DataGridColumns.Add(new MyDataGrid.DataGridColumnInfoM()
+            { Header = "第一列", Binding = "ID", HorizontalContentAlignment = "Right", DefaultWidth = 10 });
             DataGridColumns.Add(new MyDataGrid.DataGridColumnInfoM() { Header = "第二列", Binding = "Name" });
             DataGridColumns.Add(new MyDataGrid.DataGridColumnInfoM() { Header = "第三列", Binding = "Address" });
             DataGridColumns.Add(new MyDataGrid.DataGridColumnInfoM() { Header = "第四列", Binding = "ID" });
