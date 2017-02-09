@@ -39,20 +39,20 @@ namespace UIDemo.ViewModel
             DataGridColumns.Add(new MyDataGrid.DataGridColumnInfoM() { Header = "第二列", Binding = "Name" });
 
             DataGridList = new ObservableCollection<Model.DataGridM>();
-            DataGridList.Add(new Model.DataGridM() { ID = 1, Name = "dj1", Address = "ZJ" });
-            DataGridList.Add(new Model.DataGridM() { ID = 2, Name = "dj2", Address = "ZJ" });
-            DataGridList.Add(new Model.DataGridM() { ID = 3, Name = "dj3", Address = "ZJ" });
-            DataGridList.Add(new Model.DataGridM() { ID = 4, Name = "dj4", Address = "ZJ" });
-            DataGridList.Add(new Model.DataGridM() { ID = 5, Name = "dj5", Address = "ZJ" });
-            DataGridList.Add(new Model.DataGridM() { ID = 6, Name = "dj6", Address = "ZJ" });
-            DataGridList.Add(new Model.DataGridM() { ID = 7, Name = "dj7", Address = "ZJ" });
-            DataGridList.Add(new Model.DataGridM() { ID = 8, Name = "dj8", Address = "ZJ" });
-            DataGridList.Add(new Model.DataGridM() { ID = 9, Name = "dj9", Address = "ZJ" });
+            DataGridList.Add(new Model.DataGridM() { ID = 1, Name = "dj1", Address = "ZJ", Type = '1' });
+            DataGridList.Add(new Model.DataGridM() { ID = 2, Name = "dj2", Address = "ZJ", Type = '2' });
+            DataGridList.Add(new Model.DataGridM() { ID = 3, Name = "dj3", Address = "ZJ", Type = '3' });
+            DataGridList.Add(new Model.DataGridM() { ID = 4, Name = "dj4", Address = "ZJ", Type = '4' });
+            DataGridList.Add(new Model.DataGridM() { ID = 5, Name = "dj5", Address = "ZJ", Type = '5' });
+            DataGridList.Add(new Model.DataGridM() { ID = 6, Name = "dj6", Address = "ZJ", Type = '6' });
+            DataGridList.Add(new Model.DataGridM() { ID = 7, Name = "dj7", Address = "ZJ", Type = '7' });
+            DataGridList.Add(new Model.DataGridM() { ID = 8, Name = "dj8", Address = "ZJ", Type = '8' });
+            DataGridList.Add(new Model.DataGridM() { ID = 9, Name = "dj9", Address = "ZJ", Type = '9' });
             DataGridList.Add(new Model.DataGridM() { ID = 10, Name = "dj10", Address = "ZJ" });
             int loop = 0;
             while (loop++ < 10000)
             {
-                DataGridList.Add(new Model.DataGridM() { ID = loop, Name = "dj" + loop, Address = "ZJ" + loop });
+                DataGridList.Add(new Model.DataGridM() { ID = loop, Name = "dj" + loop, Address = "ZJ" + loop, Type = 'a' });
             }
             return 0;
         }
@@ -81,7 +81,7 @@ namespace UIDemo.ViewModel
         }
         private void DataGridDoubleClickCommandWorker(Model.DataGridM selectionItem)
         {
-            //MessageBox.Show(selectionItem.Name);
+            MessageBox.Show(selectionItem.Name);
         }
     }
 }

@@ -15,6 +15,7 @@
     <Grid>
         <StackPanel>
             <Button Content="DataGrid" Command="{Binding DataGridCommand}" />
+            <Button Content="UCDataGrid" Command="{Binding UCDataGridCommand}" />
         </StackPanel>
     </Grid>
 </Metro:MetroWindow>

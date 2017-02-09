@@ -66,6 +66,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\UCDataGrid.xaml.cs">
+      <DependentUpon>UCDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataConverter\STOCKTYPEcs.cs" />
     <Compile Include="DataGrid\DataGridColumnInfoM.cs" />
     <Compile Include="DataGrid\DataGridHelper.cs" />
     <Compile Include="Model\UIDemoM.cs" />
@@ -75,6 +79,13 @@
     <Compile Include="View\DataGridDemo.xaml.cs">
       <DependentUpon>DataGridDemo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UCDataGridDemo.xaml.cs">
+      <DependentUpon>UCDataGridDemo.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Controls\UCDataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DataGrid\mydatagrid.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -100,6 +111,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\DataGridDemo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UCDataGridDemo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

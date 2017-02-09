@@ -34,5 +34,20 @@ namespace UIDemo.ViewModel
         {
             new View.DataGridDemo().ShowDialog();
         }
+
+        private ICommand _UCDataGridCommand;
+        public ICommand UCDataGridCommand
+        {
+            get
+            {
+                if (_UCDataGridCommand == null)
+                    _UCDataGridCommand = new RelayCommand(UCDataGridCommandWorker, () => true);
+                return _UCDataGridCommand;
+            }
+        }
+        private void UCDataGridCommandWorker()
+        {
+            new View.UCDataGridDemo().ShowDialog();
+        }
     }
 }

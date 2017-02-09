@@ -1,38 +1,32 @@
-﻿<Metro:MetroWindow x:Class="UIDemo.View.DataGridDemo"
+﻿<Metro:MetroWindow x:Class="UIDemo.View.UCDataGridDemo"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:Metro="http://metro.mahapps.com/winfx/xaml/controls"
-        xmlns:local="clr-namespace:UIDemo.View"
         xmlns:VM="clr-namespace:UIDemo.ViewModel"
         xmlns:MyDataGrid="clr-namespace:UIDemo.MyDataGrid"
+        xmlns:local="clr-namespace:UIDemo.View"
+        xmlns:Controls="clr-namespace:UIDemo.Controls"
+        xmlns:DataConverter="clr-namespace:UIDemo.DataConverter"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-                   BorderThickness="0"
-                   GlowBrush="Gray"
-        Title="DataGridDemo" Height="300" Width="300">
+        Title="UCDataGridDemo" Height="300" Width="300">
     <Metro:MetroWindow.DataContext>
         <VM:DataGridDemoVM></VM:DataGridDemoVM>
     </Metro:MetroWindow.DataContext>
+    <Metro:MetroWindow.Resources>
+        <DataConverter:STOCK_TYPE x:Key="STOCK_TYPE"/>
+    </Metro:MetroWindow.Resources>
     <Grid>
-        <DataGrid x:Name="dataGrid" ItemsSource="{Binding DataGridList}" Style="{StaticResource MyDataGrid}"
-                  MyDataGrid:DataGridHelper.ColumnsSource="{Binding DataGridColumns}">
-            <!--
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="第一列" Binding="{Binding ID}"></DataGridTextColumn>
-                <DataGridTextColumn Header="第一列" Binding="{Binding Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="第一列" Binding="{Binding Address}"></DataGridTextColumn>
-                <DataGridTextColumn Header="第一列"></DataGridTextColumn>
-            </DataGrid.Columns>
-            -->
+        <Controls:UCDataGrid x:Name="dataGrid" ItemsSource="{Binding DataGridList}" ElementPath="root/view/newtrade/entrust/columns">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
                     <i:InvokeCommandAction Command="{Binding DataGridDoubleClickCommand}"
                                            CommandParameter="{Binding Path=SelectedItem, ElementName=dataGrid}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-        </DataGrid>
+        </Controls:UCDataGrid>
     </Grid>
 </Metro:MetroWindow>

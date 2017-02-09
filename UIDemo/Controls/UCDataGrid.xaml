@@ -1,0 +1,18 @@
+﻿<DataGrid x:Class="UIDemo.Controls.UCDataGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UIDemo.Controls"
+             mc:Ignorable="d" 
+             Style="{StaticResource MyDataGrid}"
+             ContextMenu="{DynamicResource RightMenu}"
+             PreviewKeyDown="UCDataGrid_PreviewKeyDown"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <DataGrid.Resources>
+        <ContextMenu x:Key="RightMenu">
+            <MenuItem Header="配置布局" Click="Config_Click" />
+            <MenuItem Header="保存布局" Click="Save_Click" />
+        </ContextMenu>
+    </DataGrid.Resources>
+</DataGrid>
